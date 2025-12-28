@@ -323,18 +323,18 @@ name.to_hash                      # => { 'default' => '...', 'cs' => '...', ... 
 
 ## API Methods
 
-| Method | Description |
-|--------|-------------|
-| `import_products(products)` | Bulk import products (max 100) |
-| `import_categories(categories)` | Bulk import categories (max 100) |
-| `import_parameters(parameters)` | Bulk import parameters (max 100) |
-| `import_blogs(blogs)` | Bulk import blogs (max 100) |
-| `get_products(page:, per_page:, last_update_from:, is_edited:)` | Get products page |
-| `get_categories(page:, per_page:, last_update_from:, is_edited:)` | Get categories page |
-| `get_blogs(page:, per_page:, last_update_from:, is_edited:)` | Get blogs page |
-| `each_product(last_update_from:, is_edited:)` | Iterate all products |
-| `each_category(last_update_from:, is_edited:)` | Iterate all categories |
-| `each_blog(last_update_from:, is_edited:)` | Iterate all blogs |
+| Method                                                            | Description                      |
+|-------------------------------------------------------------------|----------------------------------|
+| `import_products(products)`                                       | Bulk import products (max 100)   |
+| `import_categories(categories)`                                   | Bulk import categories (max 100) |
+| `import_parameters(parameters)`                                   | Bulk import parameters (max 100) |
+| `import_blogs(blogs)`                                             | Bulk import blogs (max 100)      |
+| `get_products(page:, per_page:, last_update_from:, is_edited:)`   | Get products page                |
+| `get_categories(page:, per_page:, last_update_from:, is_edited:)` | Get categories page              |
+| `get_blogs(page:, per_page:, last_update_from:, is_edited:)`      | Get blogs page                   |
+| `each_product(last_update_from:, is_edited:)`                     | Iterate all products             |
+| `each_category(last_update_from:, is_edited:)`                    | Iterate all categories           |
+| `each_blog(last_update_from:, is_edited:)`                        | Iterate all blogs                |
 
 ## Development
 

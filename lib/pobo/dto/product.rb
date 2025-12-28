@@ -48,7 +48,7 @@ module Pobo
       def self.from_hash(hash)
         new(
           id: hash["id"] || hash[:id],
-          is_visible: hash["is_visible"] || hash[:is_visible],
+          is_visible: hash.key?("is_visible") ? hash["is_visible"] : hash[:is_visible],
           name: LocalizedString.from_hash(hash["name"] || hash[:name]),
           url: LocalizedString.from_hash(hash["url"] || hash[:url]),
           short_description: LocalizedString.from_hash(hash["short_description"] || hash[:short_description]),
@@ -60,7 +60,7 @@ module Pobo
           categories_ids: hash["categories_ids"] || hash[:categories_ids] || [],
           parameters_ids: hash["parameters_ids"] || hash[:parameters_ids] || [],
           guid: hash["guid"] || hash[:guid],
-          is_loaded: hash["is_loaded"] || hash[:is_loaded],
+          is_loaded: hash.key?("is_loaded") ? hash["is_loaded"] : hash[:is_loaded],
           categories: hash["categories"] || hash[:categories] || [],
           created_at: parse_time(hash["created_at"] || hash[:created_at]),
           updated_at: parse_time(hash["updated_at"] || hash[:updated_at])
