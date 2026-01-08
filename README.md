@@ -338,6 +338,19 @@ name.to_hash                      # => { 'default' => '...', 'cs' => '...', ... 
 | `each_category(last_update_from:, is_edited:)`                    | Iterate all categories           |
 | `each_blog(last_update_from:, is_edited:)`                        | Iterate all blogs                |
 
+## Limits
+
+| Limit                        | Value        |
+|------------------------------|--------------|
+| Max items per import request | 100          |
+| Max items per export page    | 100          |
+| Product/Category ID length   | 255 chars    |
+| Name length                  | 250 chars    |
+| URL length                   | 255 chars    |
+| Image URL length             | 650 chars    |
+| Description length           | 65,000 chars |
+| SEO description length       | 500 chars    |
+
 ## Development
 
 After checking out the repo, run `bundle install` to install dependencies. Then, run `rake spec` to run the tests.
