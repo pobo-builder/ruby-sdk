@@ -251,6 +251,8 @@ class WebhooksController < ApplicationController
         SyncProductsJob.perform_later
       when Pobo::WebhookEvent::CATEGORIES_UPDATE
         SyncCategoriesJob.perform_later
+      when Pobo::WebhookEvent::BLOGS_UPDATE
+        SyncBlogsJob.perform_later
       end
 
       render json: { status: 'ok' }
@@ -273,7 +275,7 @@ payload = handler.handle(
 ### Webhook Payload
 
 ```ruby
-payload.event     # String: "products.update" or "categories.update"
+payload.event     # String: "products.update", "categories.update", or "blogs.update"
 payload.timestamp # Time
 payload.eshop_id  # Integer
 ```
@@ -335,6 +337,19 @@ name.to_hash                      # => { 'default' => '...', 'cs' => '...', ... 
 | `each_product(last_update_from:, is_edited:)`                     | Iterate all products             |
 | `each_category(last_update_from:, is_edited:)`                    | Iterate all categories           |
 | `each_blog(last_update_from:, is_edited:)`                        | Iterate all blogs                |
+
+## Limits
+
+| Limit                        | Value        |
+|------------------------------|--------------|
+| Max items per import request | 100          |
+| Max items per export page    | 100          |
+| Product/Category ID length   | 255 chars    |
+| Name length                  | 250 chars    |
+| URL length                   | 255 chars    |
+| Image URL length             | 650 chars    |
+| Description length           | 65,000 chars |
+| SEO description length       | 500 chars    |
 
 ## Development
 
