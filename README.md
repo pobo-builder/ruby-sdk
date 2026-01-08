@@ -251,6 +251,8 @@ class WebhooksController < ApplicationController
         SyncProductsJob.perform_later
       when Pobo::WebhookEvent::CATEGORIES_UPDATE
         SyncCategoriesJob.perform_later
+      when Pobo::WebhookEvent::BLOGS_UPDATE
+        SyncBlogsJob.perform_later
       end
 
       render json: { status: 'ok' }
@@ -273,7 +275,7 @@ payload = handler.handle(
 ### Webhook Payload
 
 ```ruby
-payload.event     # String: "products.update" or "categories.update"
+payload.event     # String: "products.update", "categories.update", or "blogs.update"
 payload.timestamp # Time
 payload.eshop_id  # Integer
 ```
