@@ -12,7 +12,7 @@ RSpec.describe Pobo::WebhookHandler do
   end
 
   describe "#handle" do
-    it "validates and parses webhook payload" do
+    it "validates and parses products.update webhook payload" do
       payload = { event: "products.update", timestamp: 1704067200, eshop_id: 123 }.to_json
       signature = sign(payload)
 
@@ -21,6 +21,26 @@ RSpec.describe Pobo::WebhookHandler do
       expect(result.event).to eq("products.update")
       expect(result.eshop_id).to eq(123)
       expect(result.timestamp).to be_a(Time)
+    end
+
+    it "validates and parses categories.update webhook payload" do
+      payload = { event: "categories.update", timestamp: 1704067200, eshop_id: 456 }.to_json
+      signature = sign(payload)
+
+      result = handler.handle(payload: payload, signature: signature)
+
+      expect(result.event).to eq("categories.update")
+      expect(result.eshop_id).to eq(456)
+    end
+
+    it "validates and parses blogs.update webhook payload" do
+      payload = { event: "blogs.update", timestamp: 1704067200, eshop_id: 789 }.to_json
+      signature = sign(payload)
+
+      result = handler.handle(payload: payload, signature: signature)
+
+      expect(result.event).to eq("blogs.update")
+      expect(result.eshop_id).to eq(789)
     end
 
     it "raises error for missing signature" do
